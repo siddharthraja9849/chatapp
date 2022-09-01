@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve:dev": "go run app.go"
+    "serve:dev": "nodemon --exec go run app.go --signal SIGTERM\n"
   },
   "keywords": [],
   "author": "",
