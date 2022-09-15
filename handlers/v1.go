@@ -21,6 +21,11 @@ func (v V1) CheckConnection(ctx *gin.Context) {
 }
 
 func (v V1) Register(ctx *gin.Context) {
-	registerBody, err := types.ParseRegisterBody(ctx)
+	var registerBody types.RegisterBody
+	var err error
+	if registerBody, err = types.ParseRegisterBody(ctx); err != nil {
+		utils.BindResponse(ctx, http.StatusBadRequest, registerBody, err)
+		return
+	}
 	utils.BindResponse(ctx, http.StatusOK, registerBody, err)
 }
