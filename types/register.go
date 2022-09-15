@@ -7,6 +7,8 @@ import (
 type RegisterBody struct {
 	Username string `json:"username" binding:"required"`
 	Password string `json:"password"`
+	Email    string `json:"email" binding:"required,email"`
+	Mobile   string `json:"mobile" binding:"required,e164"`
 }
 
 func ParseRegisterBody(ctx *gin.Context) (RegisterBody, error) {
