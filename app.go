@@ -4,8 +4,9 @@ import (
 	"chatapp/routes"
 	"chatapp/types"
 	"chatapp/utils"
-	"github.com/gin-gonic/gin"
 	"log"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
