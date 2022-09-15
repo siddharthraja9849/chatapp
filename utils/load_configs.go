@@ -3,6 +3,7 @@ package utils
 import (
 	"chatapp/types"
 	"fmt"
+
 	"github.com/spf13/viper"
 )
 

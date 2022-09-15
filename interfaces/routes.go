@@ -4,4 +4,5 @@ import "github.com/gin-gonic/gin"
 
 type Routes interface {
 	CheckConnection(ctx *gin.Context)
+	Register(ctx *gin.Context)
 }
