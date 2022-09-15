@@ -18,5 +18,5 @@ func NewV2Handler() *V2 {
 }
 
 func (v V2) CheckConnection(ctx *gin.Context) {
-	utils.BindResponse(ctx, http.StatusOK, map[string]string{"message": v.Type + " check connection route working"})
+	utils.BindResponse(ctx, http.StatusOK, map[string]string{"message": v.Type + " check connection route working"}, nil)
 }

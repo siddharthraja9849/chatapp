@@ -1,21 +1,18 @@
 package types
 
 import (
-	"fmt"
-	"os"
-
 	"github.com/gin-gonic/gin"
 )
 
 type RegisterBody struct {
-	Username string `json:"username"`
+	Username string `json:"username" binding:"required"`
+	Password string `json:"password"`
 }
 
-func ParseRegisterBody(ctx *gin.Context) RegisterBody {
+func ParseRegisterBody(ctx *gin.Context) (RegisterBody, error) {
 	var register RegisterBody
 	if err := ctx.BindJSON(&register); err != nil {
-		fmt.Errorf("%v+", err)
-		os.Exit(1)
+		return register, err
 	}
-	return register
+	return register, nil
 }

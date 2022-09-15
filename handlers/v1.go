@@ -17,10 +17,10 @@ func NewV1Handler() *V1 {
 }
 
 func (v V1) CheckConnection(ctx *gin.Context) {
-	utils.BindResponse(ctx, http.StatusOK, map[string]string{"message": v.Type + " check connection route working"})
+	utils.BindResponse(ctx, http.StatusOK, map[string]string{"message": v.Type + " check connection route working"}, nil)
 }
 
 func (v V1) Register(ctx *gin.Context) {
-	registerBody := types.ParseRegisterBody(ctx)
-	utils.BindResponse(ctx, http.StatusOK, registerBody)
+	registerBody, err := types.ParseRegisterBody(ctx)
+	utils.BindResponse(ctx, http.StatusOK, registerBody, err)
 }
