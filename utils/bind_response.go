@@ -5,7 +5,7 @@ import (
 )
 
 type Response struct {
-	Payload interface{} `json:"data"`
+	Payload interface{} `json:"data,omitempty"`
 	Error   interface{} `json:"errorMessage,omitempty"`
 }
 
