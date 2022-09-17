@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve:dev": "nodemon --exec go run app.go --signal SIGTERM\n",
+    "serve:dev": "sudo nodemon --exec go run app.go --signal SIGTERM\n",
     "up:dev-compose": "cd auto/ && docker-compose up .",
     "down:docker-compose": "docker-compose down auto/docker-compose.yaml"
   },
