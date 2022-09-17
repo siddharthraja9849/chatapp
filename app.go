@@ -1,6 +1,7 @@
 package main
 
 import (
+	db_config "chatapp/db"
 	"chatapp/routes"
 	"chatapp/types"
 	"chatapp/utils"
@@ -15,6 +16,9 @@ func main() {
 
 	config := types.ENV{}
 	utils.LoadEnvConfigs(&config)
+
+	psql := db_config.NewPsqlConfig(config.AppDbHost, config.AppDbPort, config.AppDbPassword)
+	log.Println(psql)
 
 	router := gin.Default()
 
