@@ -1,0 +1,22 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:10.3-alpine
+    ports:
+      - "5432:5432"
+    network_mode: bridge
+    container_name: chatapp_psql1
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "root"
+    volumes:
+      - ./mydbinit:/docker-entrypoint-initdb.d
+  cache:
+    image: redis:6.2-alpine
+    restart: always
+    ports: 
+      - "6379:6379"
+    command: redis-server --save 20 1 --loglevel warning
+    # TODO: Update volumes for persistent storage
+    #volumes: 
+      #- ./cache:/data
