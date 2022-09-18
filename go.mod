@@ -14,5 +14,6 @@ require (
 	golang.org/x/net v0.0.0-20220826154423-83b083e8dc8b // indirect
 	golang.org/x/sys v0.0.0-20220829200755-d48e67d00261 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
+	gorm.io/driver/postgres v1.3.9 // indirect
 	gorm.io/gorm v1.23.9 // indirect
 )
