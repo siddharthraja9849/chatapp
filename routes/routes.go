@@ -5,13 +5,14 @@ import (
 	"chatapp/utils"
 
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 )
 
-func RouterGroups(version string, router *gin.Engine) {
+func RouterGroups(version string, router *gin.Engine, psql *gorm.DB) {
 	versionGroup := router.Group(version)
 	switch version {
 	case utils.V1Route:
-		v1 := handlers.NewV1Handler()
+		v1 := handlers.NewV1Handler(psql)
 		v1Routes(versionGroup, v1)
 	case utils.V2Route:
 		v2 := handlers.NewV2Handler()

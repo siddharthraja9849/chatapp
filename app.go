@@ -1,7 +1,7 @@
 package main
 
 import (
-	db_config "chatapp/db"
+	db "chatapp/db"
 	"chatapp/routes"
 	"chatapp/types"
 	"chatapp/utils"
@@ -17,15 +17,16 @@ func main() {
 	config := types.ENV{}
 	utils.LoadEnvConfigs(&config)
 
-	psql := db_config.NewPsqlConfig(config.AppDbHost, config.AppDbPort, config.AppDbPassword)
+	psql := db.NewPsqlConfig(config.AppDbHost, config.AppDbPort, config.AppDbUsername, config.AppDbPassword, config.AppDbName, config.AppDbSslMode)
+
 	log.Println(psql)
 
 	router := gin.Default()
 
 	router.Use(gin.Logger())
 
-	routes.RouterGroups(utils.V1Route, router)
-	routes.RouterGroups(utils.V2Route, router)
+	routes.RouterGroups(utils.V1Route, router, psql)
+	routes.RouterGroups(utils.V2Route, router, psql)
 
 	if err := router.Run(":" + config.PORT); err != nil {
 		log.Printf("%v+", err)

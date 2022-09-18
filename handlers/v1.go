@@ -6,14 +6,16 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 )
 
 type V1 struct {
 	Type string
+	Psql *gorm.DB
 }
 
-func NewV1Handler() *V1 {
-	return &V1{Type: utils.V1Route}
+func NewV1Handler(psql *gorm.DB) *V1 {
+	return &V1{Type: utils.V1Route, Psql: psql}
 }
 
 func (v V1) CheckConnection(ctx *gin.Context) {
