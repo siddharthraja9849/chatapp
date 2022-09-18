@@ -10,7 +10,7 @@ services:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "root"
     volumes:
-      - ./mydbinit:/docker-entrypoint-initdb.d
+      - ./mydb:/docker-entrypoint-initdb.d
   cache:
     image: redis:6.2-alpine
     restart: always
